@@ -4,6 +4,8 @@ driver:
 
 provisioner:
   name: chef_zero
+  client_rb:
+    audit_mode: :enabled
 
 platforms:
   - name: centos-6.5
@@ -12,6 +14,7 @@ suites:
   - name: default
     run_list:
       - recipe[monitoring-client::default]
+      - recipe[monitoring-client::audit]
     attributes:
       collectd:
         graphite_ipaddress: 127.0.0.1
